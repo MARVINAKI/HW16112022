@@ -38,6 +38,96 @@ public class FlowerWarehouse {
     }
 
 
+    public String getTitleOfFlower(String titleOfFlower) {
+        for (Flower flower : flowerWarehouse) {
+            if (titleOfFlower.trim().equalsIgnoreCase(flower.getTitleOfFlower())) {
+                return flower.getTitleOfFlower();
+            }
+        }
+        return null;
+    }
+
+    public String getFlowerColor(String titleOfFlower) {
+        for (Flower flower : flowerWarehouse) {
+            if (titleOfFlower.trim().equalsIgnoreCase(flower.getTitleOfFlower())) {
+                return flower.getFlowerColor();
+            }
+        }
+        return null;
+    }
+
+    public String getCountry(String titleOfFlower) {
+        for (Flower flower : flowerWarehouse) {
+            if (titleOfFlower.trim().equalsIgnoreCase(flower.getTitleOfFlower())) {
+                return flower.getCountry();
+            }
+        }
+        return null;
+    }
+
+    public Double getCost(String titleOfFlower) {
+        for (Flower flower : flowerWarehouse) {
+            if (titleOfFlower.trim().equalsIgnoreCase(flower.getTitleOfFlower())) {
+                return flower.getCost();
+            }
+        }
+        return null;
+    }
+
+    public int getLifeSpan(String titleOfFlower) {
+        for (Flower flower : flowerWarehouse) {
+            if (titleOfFlower.trim().equalsIgnoreCase(flower.getTitleOfFlower())) {
+                return flower.getLifeSpan();
+            }
+        }
+        return 0;
+    }
+
+    public void setTitleOfFLower(String titleOfFLower, String newTitle) {
+        for (Flower flower : flowerWarehouse) {
+            if (titleOfFLower.trim().equalsIgnoreCase(flower.getTitleOfFlower())) {
+                flower.setTitleOfFlower(newTitle);
+                flowerWarehouse.set(flowerWarehouse.indexOf(flower), new Flower(flower.getTitleOfFlower(), flower.getFlowerColor(), flower.getCountry(), flower.getCost(), flower.getLifeSpan()));
+            }
+        }
+    }
+
+    public void setFlowerColor(String titleOfFLower, String newColor) {
+        for (Flower flower : flowerWarehouse) {
+            if (titleOfFLower.trim().equalsIgnoreCase(flower.getTitleOfFlower())) {
+                flower.setFlowerColor(newColor);
+                flowerWarehouse.set(flowerWarehouse.indexOf(flower), new Flower(flower.getTitleOfFlower(), flower.getFlowerColor(), flower.getCountry(), flower.getCost(), flower.getLifeSpan()));
+            }
+        }
+    }
+
+    public void setCountry(String titleOfFLower, String newCountry) {
+        for (Flower flower : flowerWarehouse) {
+            if (titleOfFLower.trim().equalsIgnoreCase(flower.getTitleOfFlower())) {
+                flower.setCountry(newCountry);
+                flowerWarehouse.set(flowerWarehouse.indexOf(flower), new Flower(flower.getTitleOfFlower(), flower.getFlowerColor(), flower.getCountry(), flower.getCost(), flower.getLifeSpan()));
+            }
+        }
+    }
+
+    public void setCost(String titleOfFLower, double newCost) {
+        for (Flower flower : flowerWarehouse) {
+            if (titleOfFLower.trim().equalsIgnoreCase(flower.getTitleOfFlower())) {
+                flower.setCost(newCost);
+                flowerWarehouse.set(flowerWarehouse.indexOf(flower), new Flower(flower.getTitleOfFlower(), flower.getFlowerColor(), flower.getCountry(), flower.getCost(), flower.getLifeSpan()));
+            }
+        }
+    }
+
+    public void setLifeSpan(String titleOfFLower, int newLifeSpan) {
+        for (Flower flower : flowerWarehouse) {
+            if (titleOfFLower.trim().equalsIgnoreCase(flower.getTitleOfFlower())) {
+                flower.setLifeSpan(newLifeSpan);
+                flowerWarehouse.set(flowerWarehouse.indexOf(flower), new Flower(flower.getTitleOfFlower(), flower.getFlowerColor(), flower.getCountry(), flower.getCost(), flower.getLifeSpan()));
+            }
+        }
+    }
+
     public void addToFlavor(String titleOfFlower, int amount) {
         for (Flower flower : flowerWarehouse) {
             if (titleOfFlower.trim().equalsIgnoreCase(flower.getTitleOfFlower())) {

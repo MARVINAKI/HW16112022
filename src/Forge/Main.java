@@ -1,5 +1,7 @@
 package Forge;
 
+import Transport.Car;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -12,17 +14,19 @@ public class Main {
         Human human5 = new Human("Владимир", "Казань", 2001, "Безработный");
 
 
-        Car car1 = new Car("Lada", "", 2015, "РФ", "", 1.7);
-        Car car2 = new Car("Audi", "A8", 2020, "Германия", "чёрный", 3.0);
-        Car car3 = new Car("BMW", "Z8", 2021, "Германия", "чёрный", 3.0);
-        Car car4 = new Car("Kia", "Sportage (4 gen)", 2018, "Южная Корея", "красный", 2.4);
-        Car car5 = new Car("Hyundai", "Avante", 2016, "Южная Корея", "оранжевый", 1.6);
+        Car car1 = new Car("Lada", "", 2015, "РФ", "", 1.7, "МКП", "Седан", "а233аа702", 5, "летняя");
+        Car car2 = new Car("Audi", "A8", 2020, "Германия", "чёрный", 3.0, "АКП", "", "а22323233аа702", 2, "зимняя");
+        Car car3 = new Car("BMW", "Z8", 2021, "Германия", "чёрный", 3.0, "АКП", "Седан", "ввв233702", 7, "летняя");
+        Car car4 = new Car("Kia", "Sportage (4 gen)", 2018, "Южная Корея", "красный", 2.4, null, "паркетник", "а233аа702", -5, "демисезонная");
+        Car car5 = new Car("Hyundai", "Avante", 2016, "Южная Корея", "оранжевый", 1.6, "КП", null, "", 5555, "летняя");
+
+        car1.changeTires(1);
+        car1.checkRegistrationNumber();
 
 
-        /*Flower flower1 = new Flower("Роза", "красный", "Голландия", 35.59);
-        Flower flower2 = new Flower("Хризантема", "розовый", null, 15, 5);
-        Flower flower3 = new Flower("Пион", null, "Англия", 69.9, 1);
-        Flower flower4 = new Flower("Гипсофила", "  ", "Турция", 19.5, 10);*/
+
+
+        /*
 
         flower.addToWarehouse("Роза             ", "красный", "Голландия", 35.59);
         flower.addToWarehouse("Хризантема", "       розовый   ", null, 15, 5);
@@ -36,6 +40,9 @@ public class Main {
         flower.addToFlavor("Хризантема", 5);
         flower.addToFlavor("гипсофила", 1);
         System.out.println(flower.getSumOfFlavor());
+
+        */
+
 
     }
 }
