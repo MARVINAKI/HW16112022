@@ -1,6 +1,7 @@
 package Transport;
 
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Car {
@@ -15,6 +16,45 @@ public class Car {
     private String registrationNumber;
     private int numberOfSeats;
     private String rubber;
+    private Insurance insurance;
+    private Key key;
+
+    public static class Key {
+        private String startType;
+
+        public Key(String startType) {
+            this.startType = startType == null || startType.trim().isEmpty() ? "default" : startType;
+        }
+
+        public String getStartType() {
+            return startType;
+        }
+    }
+
+    public class Insurance {
+        private String validityIns;
+        private int priceIns;
+        private String numberIns;
+
+        public Insurance(String validityIns, int priceIns, String numberIns) {
+            char[] mas = validityIns.toCharArray();
+            if (validityIns == null || validityIns.trim().isEmpty()) {
+                throw new RuntimeException("Отсутвуют данные");
+            } else if (validityIns.length() != 10 || mas[2] != 46 & mas[5] != 46) {
+                throw new RuntimeException("Некорректный формат (Пример: 00.00.0000)");
+            } else if (!Character.isDigit(mas[0] & mas[1] & mas[3] & mas[4] & mas[6] & mas[7] & mas[8] & mas[8])) {
+                throw new RuntimeException("Некорректный формат (Пример: 00.00.0000)");
+            } else {
+                this.validityIns = validityIns;
+                if (Integer.parseInt(validityIns.substring(6, 10)) < 2022) {
+                    System.out.println("Срочно продлевать страховку");
+                }
+            }
+            this.priceIns = Math.abs(priceIns);
+            this.numberIns = numberIns.length() != 9 ? "Должно быть 9 знаков" : numberIns;
+        }
+
+    }
 
 
     public Car(String brand, String model, int productionYear, String productionCountry, String color, Double engineVolume, String transmission, String bodyType, String registrationNumber, int numberOfSeats, String rubber) {
@@ -111,6 +151,14 @@ public class Car {
         return rubber;
     }
 
+    public Insurance getInsurance() {
+        return insurance;
+    }
+
+    public Key getKey() {
+        return key;
+    }
+
     public void setEngineVolume(Double engineVolume) {
         this.engineVolume = engineVolume <= 0 ? 1.5 : engineVolume;
     }
@@ -137,17 +185,27 @@ public class Car {
         this.rubber = rubber == null || rubber.trim().isEmpty() ? "Не указано" : rubber;
     }
 
+    public void setKey(Key key) {
+        if (key == null) {
+            this.key = key;
+        }
+    }
+
+    public void setInsurance(Insurance insurance) {
+        this.insurance = insurance;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return productionYear == car.productionYear && numberOfSeats == car.numberOfSeats && brand.equals(car.brand) && model.equals(car.model) && engineVolume.equals(car.engineVolume) && color.equals(car.color) && productionCountry.equals(car.productionCountry) && transmission.equals(car.transmission) && bodyType.equals(car.bodyType) && registrationNumber.equals(car.registrationNumber) && rubber.equals(car.rubber);
+        return productionYear == car.productionYear && numberOfSeats == car.numberOfSeats && brand.equals(car.brand) && model.equals(car.model) && engineVolume.equals(car.engineVolume) && color.equals(car.color) && productionCountry.equals(car.productionCountry) && transmission.equals(car.transmission) && bodyType.equals(car.bodyType) && registrationNumber.equals(car.registrationNumber) && rubber.equals(car.rubber) && insurance.equals(car.insurance) && key.equals(car.key);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(brand, model, engineVolume, color, productionYear, productionCountry, transmission, bodyType, registrationNumber, numberOfSeats, rubber);
+        return Objects.hash(brand, model, engineVolume, color, productionYear, productionCountry, transmission, bodyType, registrationNumber, numberOfSeats, rubber, insurance, key);
     }
 
     @Override
@@ -164,6 +222,8 @@ public class Car {
                 ", registrationNumber='" + registrationNumber + '\'' +
                 ", numberOfSeats=" + numberOfSeats +
                 ", rubber='" + rubber + '\'' +
+                ", insurance=" + insurance +
+                ", key=" + key +
                 '}';
     }
 }
